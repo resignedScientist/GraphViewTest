@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     GraphView graphView;
     LineGraphSeries<DataPoint> series;
     Viewport viewPort;
-    Button btn_add;
+    Button btn_add, btn_generate, btn_reset;
     CheckBox cb_scrollable, cb_scalable;
     int counter;
 
@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         graphView.addSeries(series);
         btn_add = (Button) findViewById(R.id.btn_add);
         btn_add.setOnClickListener(this);
+        btn_generate = (Button) findViewById(R.id.btn_generate);
+        btn_generate.setOnClickListener(this);
+        btn_reset = (Button) findViewById(R.id.btn_reset);
+        btn_reset.setOnClickListener(this);
         cb_scrollable = (CheckBox) findViewById(R.id.cb_scrollable);
         cb_scrollable.setOnCheckedChangeListener(this);
         cb_scalable = (CheckBox) findViewById(R.id.cb_scalable);
@@ -47,10 +51,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        counter++;
-        int rand = new Random().nextInt(counter);
-        series.appendData(new DataPoint(counter, (rand + counter) * counter), true, 500);
-        graphView.onDataChanged(false, false);
+        switch (view.getId()){
+            case R.id.btn_add:
+                counter++;
+                int rand = new Random().nextInt(counter);
+                series.appendData(new DataPoint(counter, (rand + counter) * counter), true, 500);
+                graphView.onDataChanged(false, false);
+                break;
+            case R.id.btn_generate:
+                onClick(btn_reset);
+                for(int i = 0; i < 100; i++)
+                    onClick(btn_add);
+                break;
+            case R.id.btn_reset:
+                series.resetData(new DataPoint[]{});
+                counter = 0;
+                break;
+        }
     }
 
     @Override

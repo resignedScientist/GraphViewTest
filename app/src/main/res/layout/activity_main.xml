@@ -16,21 +16,13 @@
         android:layout_height="200dp"
         android:layout_marginBottom="30dp" />
 
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Add a random point" />
-
     <CheckBox
         android:id="@+id/cb_scalable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/cb_scrollable"
         android:layout_below="@+id/cb_scrollable"
-        android:text="Scalable" />
+        android:text="Scalable and scrollable" />
 
     <CheckBox
         android:id="@+id/cb_scrollable"
@@ -38,4 +30,28 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/graph_view"
         android:text="Scrollable" />
+
+    <Button
+        android:text="Reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_reset"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a random point"
+        android:layout_above="@+id/btn_reset"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Generate a random graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_generate"
+        android:layout_above="@+id/btn_add"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
