@@ -1,6 +1,5 @@
 package com.example.laudien.graphviewtest;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LineGraphSeries<DataPoint> series;
     Viewport viewPort;
     Button btn_add, btn_generate, btn_reset;
-    CheckBox cb_scrollable, cb_scalable;
+    CheckBox cb_scrollable, cb_scalable, cb_background;
     int counter;
 
     @Override
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewPort.setMaxX(100);
         viewPort.setMinX(0);
         series = new LineGraphSeries<>();
-        series.setColor(Color.RED);
         graphView.addSeries(series);
         btn_add = (Button) findViewById(R.id.btn_add);
         btn_add.setOnClickListener(this);
@@ -46,12 +44,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cb_scrollable.setOnCheckedChangeListener(this);
         cb_scalable = (CheckBox) findViewById(R.id.cb_scalable);
         cb_scalable.setOnCheckedChangeListener(this);
+        cb_background = (CheckBox) findViewById(R.id.cb_background);
+        cb_background.setOnCheckedChangeListener(this);
         counter = 0;
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_add:
                 counter++;
                 int rand = new Random().nextInt(counter);
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_generate:
                 onClick(btn_reset);
-                for(int i = 0; i < 100; i++)
+                for (int i = 0; i < 100; i++)
                     onClick(btn_add);
                 break;
             case R.id.btn_reset:
@@ -78,6 +78,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.cb_scalable:
                 viewPort.setScalable(b);
+                break;
+            case R.id.cb_background:
+                series.setDrawBackground(b);
+                graphView.onDataChanged(false, false);
                 break;
         }
     }

@@ -32,26 +32,34 @@
         android:text="Scrollable" />
 
     <Button
-        android:text="Reset"
+        android:id="@+id/btn_generate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_reset"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/btn_add"
+        android:layout_centerHorizontal="true"
+        android:text="Generate a random graph" />
 
     <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add a random point"
         android:layout_above="@+id/btn_reset"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="Add a random point" />
 
     <Button
-        android:text="Generate a random graph"
+        android:id="@+id/btn_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_generate"
-        android:layout_above="@+id/btn_add"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Reset" />
+
+    <CheckBox
+        android:id="@+id/cb_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cb_scalable"
+        android:text="Enable background" />
 </RelativeLayout>
